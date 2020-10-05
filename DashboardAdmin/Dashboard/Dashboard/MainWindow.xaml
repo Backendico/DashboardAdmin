@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DashboardAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Dashboard" Height="450" Width="800">
     <Grid  x:Name="Root">
 
         <Grid x:Name="PageDashboard">
@@ -32,7 +32,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--BTN Back-->
-                    <Border  Cursor="Hand" HorizontalAlignment="Left" CornerRadius="5" Margin="25,10"  Height="30"  Background="#33FFFFFF" MouseDown="OpenStudios">
+                    <Border  Cursor="Hand" HorizontalAlignment="Left" CornerRadius="5" Margin="25,10"  Height="30"  Background="#33FFFFFF">
                         <TextBlock   TextAlignment="Center" VerticalAlignment="Center"  >
                             <Run  Foreground="Tomato"  Text="  &#xE7E8;  " FontFamily="Segoe MDL2 Assets" />
                             <Run  Foreground="Tomato" Text="LogOut  "/>
@@ -89,7 +89,7 @@
 
                 <!--OpenPan-->
                 <Border Margin="5,0" Cursor="Hand"  Width="30" Height="30"  CornerRadius="30"  >
-                    <TextBlock x:Name="BTNOpenPane" MouseDown="ControlPane" MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive"  FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Gray" Text="&#xEA5B;" FontFamily="Segoe MDL2 Assets"/>
+                    <TextBlock x:Name="BTNOpenPane" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Gray" Text="&#xEA5B;" FontFamily="Segoe MDL2 Assets"/>
                 </Border >
             </StackPanel>
 
