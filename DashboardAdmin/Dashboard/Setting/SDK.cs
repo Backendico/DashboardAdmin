@@ -32,9 +32,37 @@ namespace DashboardAdmin.Dashboard.Setting
                     Result(false);
                 }
             }
+          
+         
 
         }
 
+        sealed public class PageStatices
+        {
+            public static Links.PageStatices Links;
+
+            public static async void ReciveStatices(Action<BsonDocument> Result,Action ERR)
+            {
+                var client = new RestClient(Links.ReciveStatices);
+                client.Timeout = -1;
+                client.ClearHandlers();
+                var request = new RestRequest(Method.POST);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                var response =await client.ExecuteAsync(request);
+
+                if (response.StatusCode==System.Net.HttpStatusCode.OK)
+                {
+                    Result(BsonDocument.Parse(response.Content));
+                }
+                else
+                {
+                    ERR();
+                }
+
+            }
+
+        }
 
     }
 
@@ -43,6 +71,10 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageAUT
         {
             public string LinkLogin => "https://localhost:44346/PageAUT_Admin/Login";
+        }
+        public struct PageStatices
+        {
+            public string ReciveStatices => "https://localhost:44346/PageStatices/ReciveStatices";
         }
     }
 }

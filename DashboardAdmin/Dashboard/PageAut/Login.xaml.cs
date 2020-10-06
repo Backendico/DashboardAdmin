@@ -34,8 +34,6 @@ namespace DashboardAdmin.Dashboard.PageAut
             {
                 if (result)
                 {
-                    Debug.WriteLine(UserData.Token);
-
                     Notifaction("Logined", StatusMessage.Ok);
 
                     MainWindow.Dashboard.Root.Children.Remove(this);

@@ -32,7 +32,7 @@ namespace DashboardAdmin
         {
             InitializeComponent();
             Dashboard = this;
-            CurentPage = new SubpageStatices();
+
             CurentTab = BTNStatices;
             Root.Children.Add(new Login());
 
@@ -78,18 +78,20 @@ namespace DashboardAdmin
         }
         private void Window_LayoutUpdated(object sender, EventArgs e)
         {
-            if (NameList.Width >= 100)
-            {
-                BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
-                BTNOpenPane.Text = "\xEA49";
-            }
-            else
-            {
-                BTNOpenPane.Text = "\xEA5B";
-            }
 
-            CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
+                if (NameList.Width >= 100)
+                {
+                    BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
+                    BTNOpenPane.Text = "\xEA49";
+                }
+                else
+                {
+                    BTNOpenPane.Text = "\xEA5B";
+                }
 
+                CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
+
+          
         }
         private void LogOut(object sender, MouseButtonEventArgs e)
         {

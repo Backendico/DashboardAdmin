@@ -37,7 +37,7 @@
 
                         <!--value-->
                         <Border Grid.Row="2" Background="WhiteSmoke">
-                            <TextBlock FontSize="20" x:Name="TextTotalCount_APIs" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                            <TextBlock  FontSize="20" x:Name="TextUserCount" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                         </Border>
                     </Grid>
                 </Border>
@@ -82,8 +82,8 @@
 
                                 <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,2,0"/>
 
-                                <TextBlock Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
-                                <TextBlock  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                                <TextBlock x:Name="TextEmail_Send" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
+                                <TextBlock x:Name="TextEmailRegister_Count"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -129,8 +129,8 @@
 
                                 <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,2,0"/>
 
-                                <TextBlock Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
-                                <TextBlock  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                                <TextBlock x:Name="TextCash" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
+                                <TextBlock x:Name="TextCashBlock" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -159,12 +159,12 @@
 
                     <!--Header-->
                     <Border BorderBrush="Gray" BorderThickness="0,0,0,2" Background="Gainsboro" >
-                        <TextBlock FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center" Text="Bug Report"/>
+                        <TextBlock FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center" Text="Bugs Report"/>
                     </Border>
 
                     <!--value-->
                     <Border Grid.Row="2" Background="WhiteSmoke">
-                        <TextBlock FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBlock x:Name="TextBugs" FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                     </Border>
                 </Grid>
             </Border>
@@ -196,7 +196,7 @@
 
                     <!--value-->
                     <Border Grid.Row="2" Background="WhiteSmoke">
-                        <TextBlock FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBlock x:Name="TextSupportCount" FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                     </Border>
                 </Grid>
             </Border>
