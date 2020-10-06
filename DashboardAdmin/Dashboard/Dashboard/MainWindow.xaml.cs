@@ -1,4 +1,5 @@
-﻿using DashboardAdmin.Dashboard.Dashboard.SubpageBugs;
+﻿using DashboardAdmin.Dashboard.Dashboard.Notifactions;
+using DashboardAdmin.Dashboard.Dashboard.SubpageBugs;
 using DashboardAdmin.Dashboard.Dashboard.SubpageEmails;
 using DashboardAdmin.Dashboard.Dashboard.SubpageStatices;
 using DashboardAdmin.Dashboard.Dashboard.SubpageSupport;
@@ -79,19 +80,19 @@ namespace DashboardAdmin
         private void Window_LayoutUpdated(object sender, EventArgs e)
         {
 
-                if (NameList.Width >= 100)
-                {
-                    BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
-                    BTNOpenPane.Text = "\xEA49";
-                }
-                else
-                {
-                    BTNOpenPane.Text = "\xEA5B";
-                }
+            if (NameList.Width >= 100)
+            {
+                BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
+                BTNOpenPane.Text = "\xEA49";
+            }
+            else
+            {
+                BTNOpenPane.Text = "\xEA5B";
+            }
 
-                CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
+            CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
 
-          
+
         }
         private void LogOut(object sender, MouseButtonEventArgs e)
         {
@@ -194,5 +195,10 @@ namespace DashboardAdmin
             storyboard.Begin(this);
         }
 
+
+        public static void Notifaction(string Message, StatusMessage Status)
+        {
+            new Notifaction(Message, Status);
+        }
     }
 }

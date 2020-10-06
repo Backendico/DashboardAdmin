@@ -17,6 +17,12 @@
             <Grid Background="WhiteSmoke">
                 <StackPanel Orientation="Horizontal">
                     <!--BTNS-->
+                    <Border Cursor="Hand" x:Name="BTNAddEmail" Margin="10,0" Background="Gainsboro" Height="30" Width="80" CornerRadius="5">
+                        <TextBlock Foreground="White" VerticalAlignment="Center" TextAlignment="Center">
+                            <Run Text="&#xE89C;  " FontFamily="Segoe MDL2 Assets" />
+                            <Run  Text="Add" />
+                        </TextBlock>
+                    </Border>
                 </StackPanel>
             </Grid>
 
@@ -34,12 +40,12 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="18"/>
+                                    <ColumnDefinition Width="17"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Border BorderThickness="0,0,2,2" BorderBrush="DarkGray" Grid.Column="0"/>
@@ -50,11 +56,11 @@
                                 <Border BorderThickness="0,0,0,2"  BorderBrush="DarkGray" Grid.Column="5"/>
                                 <Border BorderThickness="0,0,0,2"  BorderBrush="DarkGray" Grid.Column="6"/>
 
-                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Email" Grid.Column="0"/>
-                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Send at" Grid.Column="1"/>
-                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Sender" Grid.Column="2"/>
-                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Status" Grid.Column="3"/>
-                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Send" Grid.Column="4"/>
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Token" Grid.Column="0"/>
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Email" Grid.Column="1"/>
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Created" Grid.Column="2"/>
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Last send" Grid.Column="3"/>
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Sender" Grid.Column="4"/>
 
                             </Grid>
 
@@ -63,7 +69,7 @@
 
                     <!--Content-->
                     <ScrollViewer Grid.Row="1" >
-                        <StackPanel x:Name="PlaceLeaderboard">
+                        <StackPanel x:Name="PlaceEmails">
 
 
                         </StackPanel>
@@ -74,6 +80,59 @@
             </Border>
 
         </Grid>
+
+
+        <!--Subpages-->
+        <!--SubPage Add-->
+        <Grid  x:Name="PanelAddPlayer"  Visibility="Collapsed" Background="#33000000" Opacity="0" >
+
+            <Grid.Effect>
+                <DropShadowEffect Direction="0" Opacity="0.33" RenderingBias="Performance" ShadowDepth="0" BlurRadius="100"/>
+            </Grid.Effect>
+
+
+            <!--Header-->
+            <Rectangle   Height="20" Width="20" Fill="White"  VerticalAlignment="Top" HorizontalAlignment="Left"   RadiusX="3" RadiusY="4" Margin="50,45,0,0"  >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+
+            <!--Body-->
+            <Border  Margin="20,58,0,0"  CornerRadius="10" Width="300" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
+
+                <Grid>
+
+                    <!--Body-->
+                    <StackPanel Grid.Row="0" Margin="10">
+                        <!--Username-->
+                        <StackPanel  Margin="0,10" >
+                            <TextBlock Text="Email :"/>
+                            <TextBox  x:Name="TextBoxEmail" Height="30" />
+                        </StackPanel>
+
+                        <!--Footer-->
+                        <Border x:Name="BTNActionAdd" Margin="0,10"  Cursor="Hand"  HorizontalAlignment="Right" Height="30" Width="80" CornerRadius="5"  Background="DarkOrange"  Grid.Row="2"  >
+                            <TextBlock TextAlignment="Center" VerticalAlignment="Center" Foreground="White"   Text="Add" />
+                        </Border>
+
+                    </StackPanel>
+
+
+
+                </Grid>
+
+            </Border>
+
+
+        </Grid>
+
+
 
     </Grid>
 

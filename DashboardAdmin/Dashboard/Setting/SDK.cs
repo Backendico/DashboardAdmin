@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace DashboardAdmin.Dashboard.Setting
@@ -11,7 +12,7 @@ namespace DashboardAdmin.Dashboard.Setting
         sealed public class PageAUT
         {
             public static Links.PageAUT Links;
-            public static async void Login(string Username,string Password,Action<bool> Result)
+            public static async void Login(string Username, string Password, Action<bool> Result)
             {
                 var client = new RestClient(Links.LinkLogin);
                 client.Timeout = -1;
@@ -20,20 +21,20 @@ namespace DashboardAdmin.Dashboard.Setting
                 request.AlwaysMultipartFormData = true;
                 request.AddParameter("Username", Username);
                 request.AddParameter("Password", Password);
-                var response =await client.ExecuteAsync(request);
+                var response = await client.ExecuteAsync(request);
 
-                if (response.StatusCode==System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     UserData.DataAdmin = BsonDocument.Parse(response.Content);
-                    Result(true) ;
+                    Result(true);
                 }
                 else
                 {
                     Result(false);
                 }
             }
-          
-         
+
+
 
         }
 
@@ -41,7 +42,7 @@ namespace DashboardAdmin.Dashboard.Setting
         {
             public static Links.PageStatices Links;
 
-            public static async void ReciveStatices(Action<BsonDocument> Result,Action ERR)
+            public static async void ReciveStatices(Action<BsonDocument> Result, Action ERR)
             {
                 var client = new RestClient(Links.ReciveStatices);
                 client.Timeout = -1;
@@ -49,9 +50,9 @@ namespace DashboardAdmin.Dashboard.Setting
                 var request = new RestRequest(Method.POST);
                 request.AlwaysMultipartFormData = true;
                 request.AddParameter("Token", UserData.Token);
-                var response =await client.ExecuteAsync(request);
+                var response = await client.ExecuteAsync(request);
 
-                if (response.StatusCode==System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Result(BsonDocument.Parse(response.Content));
                 }
@@ -62,6 +63,73 @@ namespace DashboardAdmin.Dashboard.Setting
 
             }
 
+        }
+
+        sealed public class PageEmail
+        {
+            public static Links.PageEmail Links;
+
+            public static async void ReciveEmailList(Action<BsonDocument> Result, Action ERR)
+            {
+                var client = new RestClient(Links.ReciveEmailList);
+                client.Timeout = -1;
+                client.ClearHandlers();
+                var request = new RestRequest(Method.POST);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(BsonDocument.Parse(response.Content));
+                }
+                else
+                {
+                    Result(BsonDocument.Parse(response.Content));
+                    ERR();
+                }
+            }
+
+            public static async void AddEmail(BsonDocument Detail, Action<bool> Result)
+            {
+                var client = new RestClient(Links.AddEmail);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Detail", Detail.ToString());
+                request.AddParameter("Token", UserData.Token);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
+
+
+            public static async void RemoveEmail(string TokeEmail, Action<bool> Result)
+            {
+                var client = new RestClient(Links.RemoveEmail);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.DELETE);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                request.AddParameter("TokenEmail", TokeEmail);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
         }
 
     }
@@ -75,6 +143,13 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageStatices
         {
             public string ReciveStatices => "https://localhost:44346/PageStatices/ReciveStatices";
+        }
+
+        public struct PageEmail
+        {
+            public string ReciveEmailList => "https://localhost:44346/SubpageEmail/ReciveEmailList";
+            public string AddEmail => "https://localhost:44346/SubpageEmail/AddEmail";
+            public string RemoveEmail => "https://localhost:44346/SubpageEmail/RemoveEmail";
         }
     }
 }
