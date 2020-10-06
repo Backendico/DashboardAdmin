@@ -36,7 +36,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--BTN Back-->
-                    <Border  Cursor="Hand" HorizontalAlignment="Left" CornerRadius="5" Margin="25,10"  Height="30"  Background="#33FFFFFF">
+                    <Border MouseDown="LogOut" Cursor="Hand" HorizontalAlignment="Left" CornerRadius="5" Margin="25,10"  Height="30"  Background="#33FFFFFF">
                         <TextBlock   TextAlignment="Center" VerticalAlignment="Center"  >
                             <Run  Foreground="Tomato"  Text="  &#xE7E8;  " FontFamily="Segoe MDL2 Assets" />
                             <Run  Foreground="Tomato" Text="LogOut  "/>
@@ -48,7 +48,7 @@
                 <!--Center-->
 
                 <Grid Grid.Column="1">
-                    <TextBlock x:FieldModifier="public" x:Name="TextStudioName" TextAlignment="Center" FontWeight="Bold" Text="Username . . ." FontSize="15"  VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock x:FieldModifier="public" x:Name="TextUsername" TextAlignment="Center" FontWeight="Bold" Text="Username . . ." FontSize="15"  VerticalAlignment="Center" Foreground="White"/>
                 </Grid>
 
             </Grid>
@@ -65,11 +65,11 @@
                 <!--Tabs-->
                 <StackPanel Margin="5,20,0,0"  Background="Transparent"  MinWidth="30">
 
-                    <TextBlock  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNStatices"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEB05;"  Foreground="Orange" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"  />
-                    <TextBlock  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNEmails"  Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE715;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets" />
-                    <TextBlock  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNSupport"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE95B;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
-                    <TextBlock  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNUsers"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBDA;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
-                    <TextBlock MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNBugs"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBE8;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
+                    <TextBlock  MouseDown="ChangePage" MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNStatices"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEB05;"  Foreground="Orange" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"  />
+                    <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNEmails"  Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE715;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets" />
+                    <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNSupport"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE95B;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
+                    <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNUsers"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBDA;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
+                    <TextBlock MouseDown="ChangePage" MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNBugs"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBE8;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
                 </StackPanel>
 
                 <!--Texts-->

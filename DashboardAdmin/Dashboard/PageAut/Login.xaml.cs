@@ -1,5 +1,9 @@
-﻿using System;
+﻿using DashboardAdmin.Dashboard.Dashboard.Notifactions;
+using DashboardAdmin.Dashboard.Dashboard.SubpageStatices;
+using DashboardAdmin.Dashboard.Setting;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,10 +28,31 @@ namespace DashboardAdmin.Dashboard.PageAut
             MainWindow.Dashboard.Blure(true);
         }
 
-        public void LoginAction(object sender,MouseButtonEventArgs e)
+        public void LoginAction(object sender, MouseButtonEventArgs e)
         {
+            SDK.PageAUT.Login(TextUsername.Text, TextPassword.Password, result =>
+            {
+                if (result)
+                {
+                    Debug.WriteLine(UserData.Token);
 
+                    Notifaction("Logined", StatusMessage.Ok);
+
+                    MainWindow.Dashboard.Root.Children.Remove(this);
+                    MainWindow.Dashboard.Blure(false);
+                    MainWindow.Dashboard.InitDashboard();
+                }
+                else
+                {
+                    Notifaction("LoginFaild", StatusMessage.Error);
+                }
+
+            });
         }
+
+        public static void Notifaction(string Message, StatusMessage Status) => new Notifaction(Message, Status);
+
+
 
     }
 }

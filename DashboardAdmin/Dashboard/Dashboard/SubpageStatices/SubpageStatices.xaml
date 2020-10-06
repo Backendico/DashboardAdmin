@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:DashboardAdmin.Dashboard.Dashboard.SubpageStatices"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -36,7 +37,7 @@
 
                         <!--value-->
                         <Border Grid.Row="2" Background="WhiteSmoke">
-                            <TextBlock FontSize="50" x:Name="TextTotalCount_APIs" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                            <TextBlock FontSize="20" x:Name="TextTotalCount_APIs" Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                         </Border>
                     </Grid>
                 </Border>
@@ -163,13 +164,25 @@
 
                     <!--value-->
                     <Border Grid.Row="2" Background="WhiteSmoke">
-                        <TextBlock FontSize="50"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBlock FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                     </Border>
                 </Grid>
             </Border>
 
+
+        </Grid>
+
+
+        <!--Colum3-->
+        <Grid Margin="10,0" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
             <!--Supports-->
-            <Border Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="2" Grid.Row="1">
+            <Border Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="2" Grid.Row="0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
@@ -183,13 +196,12 @@
 
                     <!--value-->
                     <Border Grid.Row="2" Background="WhiteSmoke">
-                        <TextBlock FontSize="50"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBlock FontSize="20"  Text="xxx" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Grid.Column="1"/>
                     </Border>
                 </Grid>
             </Border>
 
 
         </Grid>
-
     </Grid>
 </UserControl>

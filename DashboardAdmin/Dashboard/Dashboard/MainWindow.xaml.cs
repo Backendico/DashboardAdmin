@@ -1,6 +1,12 @@
-﻿using DashboardAdmin.Dashboard.Dashboard.SubpageStatices;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageBugs;
+using DashboardAdmin.Dashboard.Dashboard.SubpageEmails;
+using DashboardAdmin.Dashboard.Dashboard.SubpageStatices;
+using DashboardAdmin.Dashboard.Dashboard.SubpageSupport;
+using DashboardAdmin.Dashboard.Dashboard.SubpageUsers;
 using DashboardAdmin.Dashboard.PageAut;
+using DashboardAdmin.Dashboard.Setting;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +26,7 @@ namespace DashboardAdmin
 
         UserControl CurentPage;
         TextBlock CurentTab;
-        BlurEffect Blur=new BlurEffect();
+        BlurEffect Blur = new BlurEffect();
 
         public MainWindow()
         {
@@ -33,6 +39,12 @@ namespace DashboardAdmin
 
         }
 
+
+        internal void InitDashboard()
+        {
+            TextUsername.Text = UserData.Username;
+            Content.Children.Add(new SubpageStatices());
+        }
         internal async void Blure(bool OnOff)
         {
             if (OnOff)
@@ -64,6 +76,25 @@ namespace DashboardAdmin
 
             }
         }
+        private void Window_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (NameList.Width >= 100)
+            {
+                BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
+                BTNOpenPane.Text = "\xEA49";
+            }
+            else
+            {
+                BTNOpenPane.Text = "\xEA5B";
+            }
+
+            CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
+
+        }
+        private void LogOut(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
 
 
         public void ChangeColor_Active(object sender, MouseEventArgs e)
@@ -85,7 +116,6 @@ namespace DashboardAdmin
             storyboard.Begin(this);
 
         }
-
         public void ChangeColor_DeActive(object sender, MouseEventArgs e)
         {
             var TextBlock = sender as TextBlock;
@@ -104,7 +134,42 @@ namespace DashboardAdmin
             storyboard.Begin(this);
 
         }
+        private void ChangePage(object sender, MouseButtonEventArgs e)
+        {
+            Content.Children.Clear();
 
+            CurentTab.Foreground = new SolidColorBrush(Colors.Gray);
+
+            switch ((sender as TextBlock).Name)
+            {
+                case "BTNStatices":
+                    CurentPage = new SubpageStatices();
+                    CurentTab = BTNStatices;
+                    break;
+                case "BTNEmails":
+                    CurentPage = new SubpageEmails();
+                    CurentTab = BTNEmails;
+                    break;
+                case "BTNSupport":
+                    CurentPage = new SubpageSupport();
+                    CurentTab = BTNSupport;
+                    break;
+                case "BTNUsers":
+                    CurentPage = new SubpageUsers();
+                    CurentTab = BTNUsers;
+                    break;
+                case "BTNBugs":
+                    CurentPage = new SubpageBugs();
+                    CurentTab = BTNBugs;
+                    break;
+                default:
+                    Debug.WriteLine("Not set");
+                    break;
+            }
+
+            Content.Children.Add(CurentPage);
+            CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
+        }
         public void ControlPane(object sender, MouseButtonEventArgs e)
         {
             Storyboard storyboard = new Storyboard();
@@ -125,23 +190,6 @@ namespace DashboardAdmin
             }
 
             storyboard.Begin(this);
-        }
-
-
-        private void Window_LayoutUpdated(object sender, EventArgs e)
-        {
-            if (NameList.Width >= 100)
-            {
-                BTNOpenPane.Foreground = new SolidColorBrush(Colors.Orange);
-                BTNOpenPane.Text = "\xEA49";
-            }
-            else
-            {
-                BTNOpenPane.Text = "\xEA5B";
-            }
-
-            CurentTab.Foreground = new SolidColorBrush(Colors.Orange);
-
         }
 
     }
