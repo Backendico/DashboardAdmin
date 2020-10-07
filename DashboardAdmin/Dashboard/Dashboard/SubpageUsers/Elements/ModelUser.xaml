@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements.ModelUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements"
+             mc:Ignorable="d" 
+             Height="40"
+             d:DesignHeight="44.84" d:DesignWidth="1918.475">
+    <!--Header-->
+    <Border  Grid.Row="0"   Background="Transparent">
+        <Grid   Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="0"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="1"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="2"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="3"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="4"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="5"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="6"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="7"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="8"/>
+
+                <TextBlock x:Name="TextToken"  VerticalAlignment="Center" TextAlignment="Center"  Text="Token" Grid.Column="0"/>
+                <TextBlock x:Name="TextUsername" VerticalAlignment="Center" TextAlignment="Center"  Text="Username" Grid.Column="1"/>
+                <TextBlock x:Name="TextPlayers" VerticalAlignment="Center" TextAlignment="Center"  Text="Players" Grid.Column="2"/>
+                <TextBlock x:Name="TextLeaderboards"  VerticalAlignment="Center" TextAlignment="Center"  Text="Leaderboards" Grid.Column="3"/>
+                <TextBlock x:Name="TextStudios"  VerticalAlignment="Center" TextAlignment="Center"  Text="StudiosGame" Grid.Column="4"/>
+                <TextBlock x:Name="TextCash" VerticalAlignment="Center" TextAlignment="Center"  Text="Cash" Grid.Column="5"/>
+                <TextBlock x:Name="TextEmail" VerticalAlignment="Center" TextAlignment="Center"  Text="Email" Grid.Column="6"/>
+                <TextBlock x:Name="TextPhone" VerticalAlignment="Center" TextAlignment="Center"  Text="Phone" Grid.Column="7"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="8">
+                    <!--Block User-->
+                    <Border Margin="1,0" Height="30" Width="30" Background="Tomato" CornerRadius="5,0,0,5">
+                        <TextBlock Text="&#xE8F8;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+                    
+                    <!--Delete-->
+                    <Border  Margin="1,0" Height="30" Width="30" Background="Tomato"  >
+                        <TextBlock Text="&#xE74D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+                    
+                    <!--SendNotifaction-->
+                    <Border Margin="1,0" Height="30" Width="30" Background="Orange" >
+                        <TextBlock Text="&#xED0D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+                    
+                    <!--EdiPlayer-->
+                    <Border Margin="1,0" Height="30" Width="30" Background="LightGreen"  CornerRadius="0,5,5,0"  >
+                        <TextBlock Text="&#xE70F;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
+</UserControl>

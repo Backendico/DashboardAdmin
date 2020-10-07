@@ -66,9 +66,9 @@
                 <StackPanel Margin="5,20,0,0"  Background="Transparent"  MinWidth="30">
 
                     <TextBlock  MouseDown="ChangePage" MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNStatices"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEB05;"  Foreground="Orange" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"  />
+                    <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNUsers"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBDA;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
                     <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNEmails"  Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE715;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets" />
                     <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNSupport"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xE95B;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
-                    <TextBlock MouseDown="ChangePage"  MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNUsers"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBDA;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
                     <TextBlock MouseDown="ChangePage" MouseEnter="ChangeColor_Active" MouseLeave="ChangeColor_DeActive" x:Name="BTNBugs"   Cursor="Hand" Margin="10,0,0,10" FontSize="18" Text="&#xEBE8;"  Foreground="Gray" TextAlignment="Left" Height="30"  FontFamily="Segoe MDL2 Assets"   />
                 </StackPanel>
 
@@ -76,9 +76,9 @@
                 <Border BorderBrush="Gainsboro" BorderThickness="0,0,1,0" Grid.Column="1"/>
                 <StackPanel x:Name="NameList" Grid.Column="1" Margin="0,20,10,0" Width="2"   Background="Transparent" >
                     <TextBlock Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Statices"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
+                    <TextBlock  Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Users"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
                     <TextBlock Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Emails"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
                     <TextBlock  Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Support"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
-                    <TextBlock  Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Users"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
                     <TextBlock  Cursor="Hand" Margin="10,0,0,10" FontSize="15" Text="Bugs"  Foreground="Gray" TextAlignment="Left" Background="Transparent" Height="30"/>
                 </StackPanel>
 

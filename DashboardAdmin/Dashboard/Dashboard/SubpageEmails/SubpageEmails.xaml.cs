@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Mail;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,25 +43,35 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageEmails
 
             BTNActionAdd.MouseDown += (s, e) =>
             {
-                var Detail = new BsonDocument
+                try
+                {
+                    _ = new MailAddress(TextBoxEmail.Text) ;
+
+                    var Detail = new BsonDocument
                 {
                     {"Email",TextBoxEmail.Text },
                     {"Sender",UserData.Username }
                 };
-                SDK.PageEmail.AddEmail(Detail,
-                    result =>
-                    {
-                        if (result)
+                    SDK.PageEmail.AddEmail(Detail,
+                        result =>
                         {
-                            TextBoxEmail.Text = "";
-                            MainWindow.Notifaction("Email Send", Notifactions.StatusMessage.Ok);
-                            InitilizeEmail();
-                        }
-                        else
-                        {
-                            MainWindow.Notifaction("Faild", Notifactions.StatusMessage.Error);
-                        }
-                    });
+                            if (result)
+                            {
+                                TextBoxEmail.Text = "";
+                                MainWindow.Notifaction("Email Send", Notifactions.StatusMessage.Ok);
+                                InitilizeEmail();
+                            }
+                            else
+                            {
+                                MainWindow.Notifaction("Faild", Notifactions.StatusMessage.Error);
+                            }
+                        });
+                }
+                catch (Exception ex )
+                {
+                    TextBoxEmail.Text = null;
+                    MainWindow.Notifaction(ex.Message, Notifactions.StatusMessage.Error);
+                }
             };
 
             InitilizeEmail();

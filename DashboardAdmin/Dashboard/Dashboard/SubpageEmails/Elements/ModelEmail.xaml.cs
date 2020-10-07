@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DashboardAdmin.Dashboard.Dashboard.SubpageEmails.Elements
 {
-    /// <summary>
-    /// Interaction logic for ModelEmail.xaml
-    /// </summary>
     public partial class ModelEmail : UserControl
     {
         public ModelEmail(BsonDocument DetailEmail, Action RefreshListEmail)

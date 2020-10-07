@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements;
+using DashboardAdmin.Dashboard.Setting;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,27 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageUsers
         public SubpageUsers()
         {
             InitializeComponent();
+            InitizePageUsers();
+        }
+
+        public void InitizePageUsers()
+        {
+            PlaceContentUsers.Children.Clear();
+
+            SDK.PageUsers.ReciveUsers(result =>
+            {
+                if (result["ListUsers"].AsBsonArray.Count >= 1)
+                {
+                    foreach (var item in result["ListUsers"].AsBsonArray)
+                    {
+                        PlaceContentUsers.Children.Add(new ModelUser(item.AsBsonDocument));
+                    }
+                }
+                else
+                {
+                    MainWindow.Notifaction("Players Not Found", Notifactions.StatusMessage.Warrning);
+                }
+            });
         }
     }
 }

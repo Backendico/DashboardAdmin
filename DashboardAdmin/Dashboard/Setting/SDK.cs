@@ -3,6 +3,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Text;
 
 namespace DashboardAdmin.Dashboard.Setting
@@ -110,7 +111,6 @@ namespace DashboardAdmin.Dashboard.Setting
                 }
             }
 
-
             public static async void RemoveEmail(string TokeEmail, Action<bool> Result)
             {
                 var client = new RestClient(Links.RemoveEmail);
@@ -128,6 +128,32 @@ namespace DashboardAdmin.Dashboard.Setting
                 else
                 {
                     Result(false);
+                }
+            }
+
+        }
+        sealed public class PageUsers
+        {
+            public static Links.PageUsers Links;
+
+            public static async void ReciveUsers(Action<BsonDocument> Result)
+            {
+                var client = new RestClient(Links.ReciveUser);
+                client.ClearHandlers();
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Debug.WriteLine(response.Content);
+                    Result(BsonDocument.Parse(response.Content));
+                }
+                else
+                {
+                    Result(new BsonDocument());
                 }
             }
         }
@@ -150,6 +176,11 @@ namespace DashboardAdmin.Dashboard.Setting
             public string ReciveEmailList => "https://localhost:44346/SubpageEmail/ReciveEmailList";
             public string AddEmail => "https://localhost:44346/SubpageEmail/AddEmail";
             public string RemoveEmail => "https://localhost:44346/SubpageEmail/RemoveEmail";
+        }
+
+        public struct PageUsers
+        {
+            public string ReciveUser => "https://localhost:44346/SubpageUsers/ReciveUsers";
         }
     }
 }
