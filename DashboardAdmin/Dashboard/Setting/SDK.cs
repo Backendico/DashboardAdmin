@@ -157,7 +157,6 @@ namespace DashboardAdmin.Dashboard.Setting
                 }
             }
         }
-
     }
 
     public struct Links

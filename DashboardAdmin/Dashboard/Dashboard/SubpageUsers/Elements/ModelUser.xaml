@@ -7,8 +7,43 @@
              mc:Ignorable="d" 
              Height="40"
              d:DesignHeight="44.84" d:DesignWidth="1918.475">
+
+
     <!--Header-->
-    <Border  Grid.Row="0"   Background="Transparent">
+    <Border Name="Root"  Grid.Row="0"   Background="Transparent">
+
+        <Border.Triggers>
+            <EventTrigger  RoutedEvent="MouseEnter">
+                <BeginStoryboard  >
+                    <Storyboard  Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="0" To="1" Duration="0:0:0:0.3" />
+                    </Storyboard>
+
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard  Storyboard.TargetName="Root" Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)">
+                    <ColorAnimation From="Transparent" To="Gainsboro" Duration="0:0:0:0.3" />
+                </Storyboard>
+                </BeginStoryboard>
+                
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="1" To="0" Duration="0:0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard  Storyboard.TargetName="Root" Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)">
+                        <ColorAnimation From="Gainsboro" To="Transparent" Duration="0:0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+                
+            </EventTrigger>
+        </Border.Triggers>
+
         <Grid   Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -19,8 +54,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
                 <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="0"/>
@@ -42,24 +77,25 @@
                 <TextBlock x:Name="TextEmail" VerticalAlignment="Center" TextAlignment="Center"  Text="Email" Grid.Column="6"/>
                 <TextBlock x:Name="TextPhone" VerticalAlignment="Center" TextAlignment="Center"  Text="Phone" Grid.Column="7"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="8">
+                <StackPanel  x:Name="Controller" Opacity="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="8" Background="Transparent">
+
                     <!--Block User-->
-                    <Border Margin="1,0" Height="30" Width="30" Background="Tomato" CornerRadius="5,0,0,5">
+                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Tomato" CornerRadius="5,0,0,5">
                         <TextBlock Text="&#xE8F8;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
-                    
+
                     <!--Delete-->
-                    <Border  Margin="1,0" Height="30" Width="30" Background="Tomato"  >
+                    <Border Cursor="Hand"  Margin="1,0" Height="30" Width="30" Background="Tomato"  >
                         <TextBlock Text="&#xE74D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
-                    
+
                     <!--SendNotifaction-->
-                    <Border Margin="1,0" Height="30" Width="30" Background="Orange" >
+                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Orange" >
                         <TextBlock Text="&#xED0D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
-                    
+
                     <!--EdiPlayer-->
-                    <Border Margin="1,0" Height="30" Width="30" Background="LightGreen"  CornerRadius="0,5,5,0"  >
+                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="LightGreen"  CornerRadius="0,5,5,0"  >
                         <TextBlock Text="&#xE70F;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
 

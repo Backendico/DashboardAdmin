@@ -19,7 +19,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements
         public ModelUser(BsonDocument DetailUser)
         {
             InitializeComponent();
-
+            
             TextToken.Text = DetailUser["Token"].ToString();
             TextUsername.Text = DetailUser["Username"].AsString;
             TextPlayers.Text = DetailUser["Players"].ToString();
@@ -28,6 +28,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements
             TextCash.Text = DetailUser["Cash"].ToString();
             TextEmail.Text = DetailUser["Email"].AsString;
             TextPhone.Text = DetailUser["Phone"].AsString;
+            
         }
     }
 }
