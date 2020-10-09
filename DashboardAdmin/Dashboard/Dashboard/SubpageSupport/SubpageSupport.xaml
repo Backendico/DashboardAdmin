@@ -46,7 +46,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="18"/>
+                                    <ColumnDefinition Width="17"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Border BorderThickness="0,0,2,2" BorderBrush="DarkGray" Grid.Column="0"/>
@@ -71,7 +71,7 @@
 
                     <!--Content-->
                     <ScrollViewer Grid.Row="1" >
-                        <StackPanel x:Name="PlaceLeaderboard">
+                        <StackPanel x:Name="PlaceContentSupports">
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

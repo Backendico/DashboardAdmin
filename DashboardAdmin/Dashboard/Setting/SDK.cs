@@ -132,6 +132,7 @@ namespace DashboardAdmin.Dashboard.Setting
             }
 
         }
+
         sealed public class PageUsers
         {
             public static Links.PageUsers Links;
@@ -157,6 +158,33 @@ namespace DashboardAdmin.Dashboard.Setting
                 }
             }
         }
+
+        sealed public class PageSupport
+        {
+            public static Links.PageSupport Links;
+
+            public static async void ReciveSupport(Action<BsonDocument> Result, Action ERR)
+            {
+                var client = new RestClient(Links.ReciveSupports);
+                client.Timeout = -1;
+                client.ClearHandlers();
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("Token", UserData.Token);
+                var Responce = await client.ExecuteAsync(request);
+
+                if (Responce.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(BsonDocument.Parse(Responce.Content));
+
+                }
+                else
+                {
+                    Result(new BsonDocument());
+                    ERR();
+                }
+            }
+
+        }
     }
 
     public struct Links
@@ -180,6 +208,11 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageUsers
         {
             public string ReciveUser => "https://localhost:44346/SubpageUsers/ReciveUsers";
+        }
+
+        public struct PageSupport
+        {
+            public string ReciveSupports => "https://localhost:44346/SubpageSupport/ReciveSupports";
         }
     }
 }

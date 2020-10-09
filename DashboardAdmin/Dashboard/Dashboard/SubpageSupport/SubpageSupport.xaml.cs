@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets;
+using DashboardAdmin.Dashboard.Setting;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,27 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
         public SubpageSupport()
         {
             InitializeComponent();
+            ReciveSupports();
+        }
+
+        public void ReciveSupports()
+        {
+            PlaceContentSupports.Children.Clear();
+
+            SDK.PageSupport.ReciveSupport(
+                result =>
+                {
+                    foreach (var Support in result["ListSupports"].AsBsonArray)
+                    {
+                        PlaceContentSupports.Children.Add(new ModelSupport());
+
+                    }
+                },
+                () =>
+                {
+                    MainWindow.Notifaction("Support Not Found", Notifactions.StatusMessage.Error);
+                });
         }
     }
+
 }
