@@ -39,7 +39,8 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
                     break;
 
             }
-            TextCreated.Text = DetailSupport["Created"].ToLocalTime().ToString() ;
+
+            TextCreated.Text = DetailSupport["Created"].ToLocalTime().ToString();
 
             switch (DetailSupport["Priority"].ToInt32())
             {
@@ -53,6 +54,16 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
                     Priority.BorderBrush = new SolidColorBrush(Colors.Tomato);
                     break;
             }
+
+
+            //init BTNs
+            BTNViewSupport.MouseDown += (s, e) =>
+            {
+                MainWindow.Dashboard.Content.Children.Add(new ViewSupport(DetailSupport));
+            };
+
         }
+
+
     }
 }

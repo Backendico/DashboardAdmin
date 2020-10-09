@@ -1,18 +1,7 @@
 ﻿using DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets;
 using DashboardAdmin.Dashboard.Setting;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
 {
@@ -24,7 +13,9 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
         public SubpageSupport()
         {
             InitializeComponent();
+
             ReciveSupports();
+
         }
 
         public void ReciveSupports()
@@ -45,6 +36,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
                     MainWindow.Notifaction("Support Not Found", Notifactions.StatusMessage.Error);
                 });
         }
+
     }
 
 }
