@@ -19,16 +19,16 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements
         public ModelUser(BsonDocument DetailUser)
         {
             InitializeComponent();
-            
+
             TextToken.Text = DetailUser["Token"].ToString();
             TextUsername.Text = DetailUser["Username"].AsString;
             TextPlayers.Text = DetailUser["Players"].ToString();
             TextLeaderboards.Text = DetailUser["Leaderboards"].ToString();
             TextStudios.Text = DetailUser["GameStudio"].ToString();
-            TextCash.Text = DetailUser["Cash"].ToString();
+            TextCash.Text = DetailUser["Cash"].ToInt64().ToString("#,##0")+" T" ;
             TextEmail.Text = DetailUser["Email"].AsString;
-            TextPhone.Text = DetailUser["Phone"].AsString;
-            
+            TextPhone.Text = DetailUser["Phone"].GetType() != typeof(BsonNull) ? DetailUser["Phone"].ToString() : "Not Set";
+
         }
     }
 }

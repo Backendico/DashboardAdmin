@@ -32,15 +32,15 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageStatices
             SDK.PageStatices.ReciveStatices(
                 Result =>
                 {
-                    TextUserCount.Text = Result["Users"]["Count"].ToString();
-                    TextBugs.Text = Result["BugReport"]["Count"].ToString();
-                    TextSupportCount.Text = Result["Supports"]["Count"].ToString();
+                    TextUserCount.Text = Result["Users"].ToString();
+                    TextBugs.Text = Result["BugReport"].ToString();
+                    TextSupportCount.Text = Result["Supports"].ToString();
                     TextEmail_Send.Text = Result["Emails"]["Send"].ToString();
                     TextEmailRegister_Count.Text = Result["Emails"]["Register"].ToString();
-                    TextCash.Text = Result["Cash"]["Cash"].ToString();
-                    TextCashBlock.Text = Result["Cash"]["Block"].ToString();
+                    TextCash.Text = Result["Cash"].ToInt64().ToString("#,##0")+" T";
                 }, () =>
                 {
+
 
                 });
         }
