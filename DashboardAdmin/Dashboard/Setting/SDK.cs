@@ -149,7 +149,6 @@ namespace DashboardAdmin.Dashboard.Setting
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    Debug.WriteLine(response.Content);
                     Result(BsonDocument.Parse(response.Content));
                 }
                 else

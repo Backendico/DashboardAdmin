@@ -92,7 +92,7 @@
                     </Border>
 
                     <!--EdiPlayer-->
-                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="LightGreen"  CornerRadius="0,5,5,0"  >
+                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Green"  CornerRadius="0,5,5,0"  >
                         <TextBlock Text="&#xE70F;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
 
