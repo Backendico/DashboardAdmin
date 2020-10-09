@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements;
+using DashboardAdmin.Dashboard.Setting;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,24 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageBugs
         public SubpageBugs()
         {
             InitializeComponent();
+            ReciveLisBugs();
+        }
+
+        void ReciveLisBugs()
+        {
+            SDK.PageBugs.ReciveBugs(
+                result =>
+                {
+
+                    foreach (var item in result["ListBugs"].AsBsonArray)
+                    {
+                        PlaceBugs.Children.Add(new ModelBugs(item.AsBsonDocument));
+                    }
+
+                },
+                () =>
+                {
+                });
         }
     }
 }

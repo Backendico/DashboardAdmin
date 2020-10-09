@@ -36,7 +36,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
                 {
                     foreach (var Support in result["ListSupports"].AsBsonArray)
                     {
-                        PlaceContentSupports.Children.Add(new ModelSupport());
+                        PlaceContentSupports.Children.Add(new ModelSupport(Support.AsBsonDocument));
 
                     }
                 },

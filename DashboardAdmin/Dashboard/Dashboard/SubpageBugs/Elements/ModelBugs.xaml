@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements.ModelBugs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements"
+             mc:Ignorable="d" 
+             Height="40"
+             d:DesignHeight="49.644" d:DesignWidth="800">
+
+    <Border x:Name="Root"  Grid.Row="0"   Background="Transparent">
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="0" To="1" Duration="0:0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Root" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)">
+                        <ColorAnimation From="Transparent" To="Gainsboro" Duration="0:0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="1" To="0" Duration="0:0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Root" Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)">
+                        <ColorAnimation From="Gainsboro" To="Transparent" Duration="0:0:0:0.3"/>
+                    </Storyboard>
+                </BeginStoryboard>
+
+            </EventTrigger>
+
+        </Border.Triggers>
+
+        <Grid Background="Transparent"  Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border  BorderThickness="0,0,2,2" BorderBrush="Gray" Grid.Column="0"/>
+                <Border x:Name="Priority" BorderThickness="5,0,0,0" BorderBrush="Transparent" Grid.Column="0"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="1"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="2"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="3"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="4"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="5"/>
+
+                <TextBlock x:Name="TextTopic" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Topic" Grid.Column="0"/>
+                <TextBlock x:Name="TextSubject" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Subject" Grid.Column="1"/>
+                <TextBlock x:Name="TextDescription" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Description" Grid.Column="2"/>
+                <TextBlock x:Name="TextDashboard"  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Dashboard" Grid.Column="3"/>
+                <TextBlock x:Name="TextDatabase" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Database" Grid.Column="4"/>
+
+                <Border Cursor="Hand" Opacity="0" x:Name="Controller" Height="30" Width="80" CornerRadius="5" Grid.Column="5" Background="Orange">
+                    <TextBlock Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&#xE7B3;" FontFamily="Segoe MDL2 Assets"/>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </Border>
+
+
+</UserControl>

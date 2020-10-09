@@ -7,51 +7,83 @@
              mc:Ignorable="d" 
              Height="40"
              d:DesignHeight="58.214" d:DesignWidth="800">
-    <Grid>
-        <Border  Grid.Row="0"   Background="Transparent">
-            <Grid Background="Transparent"  Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+    <Border x:Name="Root" Grid.Row="0"   Background="Transparent">
 
-                    <Border BorderThickness="0,0,2,2" BorderBrush="DarkGray" Grid.Column="0"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="1"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="2"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="3"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="4"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="5"/>
-                    <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="6"/>
+        <Border.Triggers>
+            <EventTrigger  RoutedEvent="MouseEnter">
+                <BeginStoryboard  >
+                    <Storyboard  Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="0" To="1" Duration="0:0:0:0.3" />
+                    </Storyboard>
+
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard  Storyboard.TargetName="Root" Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)">
+                        <ColorAnimation From="Transparent" To="Gainsboro" Duration="0:0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="Controller" Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation From="1" To="0" Duration="0:0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+
+                <BeginStoryboard>
+                    <Storyboard  Storyboard.TargetName="Root" Storyboard.TargetProperty="(StackPanel.Background).(SolidColorBrush.Color)">
+                        <ColorAnimation From="Gainsboro" To="Transparent" Duration="0:0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+
+            </EventTrigger>
+        </Border.Triggers>
+
+        <Grid Background="Transparent"  Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border  BorderThickness="2,0,2,2" BorderBrush="DarkGray" Grid.Column="0"/>
+                <Border x:Name="Priority" BorderThickness="5,0,0,0"  BorderBrush="Transparent" Grid.Column="0"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="1"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="2"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="3"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="4"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="5"/>
+                <Border BorderThickness="0,0,2,2"  BorderBrush="DarkGray" Grid.Column="6"/>
 
 
-                    <TextBlock  VerticalAlignment="Center" TextAlignment="Center"  Text="Token" Grid.Column="0"/>
-                    <TextBlock  VerticalAlignment="Center" TextAlignment="Center"  Text="Token User" Grid.Column="1"/>
-                    <TextBlock  VerticalAlignment="Center" TextAlignment="Center"  Text="Header" Grid.Column="2"/>
-                    <TextBlock  VerticalAlignment="Center" TextAlignment="Center"  Text="Part" Grid.Column="3"/>
-                    <TextBlock  VerticalAlignment="Center" TextAlignment="Center"  Text="Created" Grid.Column="4"/>
+                <TextBlock  x:Name="TextToken" VerticalAlignment="Center" TextAlignment="Center"  Text="Token" Grid.Column="0"/>
+                <TextBlock  x:Name="TextTokenUsername" VerticalAlignment="Center" TextAlignment="Center"  Text="Token User" Grid.Column="1"/>
+                <TextBlock  x:Name="TextHeader" VerticalAlignment="Center" TextAlignment="Center"  Text="Header" Grid.Column="2"/>
+                <TextBlock  x:Name="TextPart" VerticalAlignment="Center" TextAlignment="Center"  Text="Part" Grid.Column="3"/>
+                <TextBlock  x:Name="TextCreated" VerticalAlignment="Center" TextAlignment="Center"  Text="Created" Grid.Column="4"/>
+                <!--Controller-->
+                <StackPanel Opacity="0" x:Name="Controller" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5">
 
-                    <!--Controller-->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="6">
-                        
-                        <!--BTNClose-->
-                        <Border Margin="1,0" CornerRadius="5,0,0,5" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Tomato"  Height="30" Width="30">
-                            <TextBlock Text="&#xF140;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
-                        </Border>
-                        <!--BTNSendMessage-->
-                        <Border  Margin="1,0" CornerRadius="0,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Orange"  Height="30" Width="30">
-                            <TextBlock Text="&#xE8BD;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
-                        </Border>
-                        
-                    </StackPanel>
-                </Grid>
+                    <!--BTNClose-->
+                    <Border Cursor="Hand" Margin="1,0" CornerRadius="5,0,0,5" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Tomato"  Height="30" Width="30">
+                        <TextBlock Text="&#xF140;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+                    <!--BTNSendMessage-->
+                    <Border Cursor="Hand"  Margin="1,0" CornerRadius="0,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Orange"  Height="30" Width="30">
+                        <TextBlock Text="&#xE8BD;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    </Border>
+
+                </StackPanel>
 
             </Grid>
-        </Border>
-    </Grid>
+
+        </Grid>
+    </Border>
+
 </UserControl>

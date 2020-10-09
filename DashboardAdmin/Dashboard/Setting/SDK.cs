@@ -185,6 +185,30 @@ namespace DashboardAdmin.Dashboard.Setting
             }
 
         }
+        sealed public class PageBugs
+        {
+            public static Links.PageBugs Links;
+
+            public static async void ReciveBugs(Action<BsonDocument> Result, Action ERR)
+            {
+                var client = new RestClient(Links.ReciveBugs);
+                client.Timeout = -1;
+                client.ClearHandlers();
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("Token", UserData.Token);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(BsonDocument.Parse(response.Content));
+                }
+                else
+                {
+                    Result(new BsonDocument());
+                    ERR();
+                }
+            }
+        }
     }
 
     public struct Links
@@ -213,6 +237,11 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageSupport
         {
             public string ReciveSupports => "https://localhost:44346/SubpageSupport/ReciveSupports";
+        }
+
+        public struct PageBugs
+        {
+            public string ReciveBugs => "https://localhost:44346/SubpageBugs/ReciveBugs";
         }
     }
 }

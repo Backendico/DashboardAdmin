@@ -33,24 +33,29 @@
                         <Grid Background="Gainsboro"  Grid.Row="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
                                     <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="18"/>
+                                    <ColumnDefinition Width="17"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Border BorderThickness="0,0,2,2" BorderBrush="Gray" Grid.Column="0"/>
                                 <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="1"/>
                                 <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="2"/>
                                 <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="3"/>
-                                <Border BorderThickness="0,0,0,2"  BorderBrush="Gray" Grid.Column="4"/>
+                                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="4"/>
+                                <Border BorderThickness="0,0,2,2"  BorderBrush="Gray" Grid.Column="5"/>
+                                <Border BorderThickness="0,0,0,2"  BorderBrush="Gray" Grid.Column="6"/>
 
                                 <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Topic" Grid.Column="0"/>
                                 <TextBlock VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Subject" Grid.Column="1"/>
-                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Status" Grid.Column="2"/>
-                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Send" Grid.Column="3"/>
-                            
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Description" Grid.Column="2"/>
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Dashboard" Grid.Column="3"/>
+                                <TextBlock  VerticalAlignment="Center" TextAlignment="Center" Margin="10,0,0,0" Text="Database" Grid.Column="4"/>
+
                             </Grid>
 
                         </Grid>
@@ -58,7 +63,7 @@
 
                     <!--Content-->
                     <ScrollViewer Grid.Row="1" >
-                        <StackPanel x:Name="PlaceLeaderboard">
+                        <StackPanel x:Name="PlaceBugs">
 
 
                         </StackPanel>
