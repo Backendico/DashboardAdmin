@@ -15,14 +15,8 @@
             </Grid.RowDefinitions>
             <!--Controllers-->
             <Grid Background="WhiteSmoke">
+                <!--BTNS-->
                 <StackPanel Margin="10,0" Orientation="Horizontal">
-                    <!--BTNS-->
-                    <Border Cursor="Hand" VerticalAlignment="Center"  CornerRadius="5" Background="Gainsboro" Height="30">
-                        <TextBlock Margin="10,0" Foreground="White" TextAlignment="Center" VerticalAlignment="Center" >
-                            <Run  Text="&#xED0D;  " FontFamily="Segoe MDL2 Assets"/>
-                            <Run Text="Send Notifaction"/>
-                        </TextBlock>
-                    </Border>
 
                 </StackPanel>
             </Grid>
@@ -46,7 +40,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
-                                    
+
                                     <ColumnDefinition Width="17"/>
                                 </Grid.ColumnDefinitions>
 

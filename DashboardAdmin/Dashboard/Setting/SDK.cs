@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Text;
 
 namespace DashboardAdmin.Dashboard.Setting
@@ -183,7 +184,50 @@ namespace DashboardAdmin.Dashboard.Setting
                 }
             }
 
+            public static async void AddMessageToSupport(ObjectId TokenSupport, string Studio, BsonDocument Message, Action<bool> Result)
+            {
+                var client = new RestClient(Links.AddMessageToSupport);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.PUT);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                request.AddParameter("TokenSupport", TokenSupport.ToString());
+                request.AddParameter("Studio", Studio);
+                request.AddParameter("MessageDetail", Message.ToString());
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
+
+            public static async void BlockMessage(string Studio, ObjectId TokenSupport, Action<bool> Result)
+            {
+                var client = new RestClient(Links.BlockMessage);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.DELETE);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                request.AddParameter("TokenSupport", TokenSupport.ToString());
+                request.AddParameter("Studio", Studio);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
         }
+
         sealed public class PageBugs
         {
             public static Links.PageBugs Links;
@@ -236,6 +280,8 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageSupport
         {
             public string ReciveSupports => "https://localhost:44346/SubpageSupport/ReciveSupports";
+            public string AddMessageToSupport => "https://localhost:44346/SubpageSupport/AddSupportMessage";
+            public string BlockMessage => "https://localhost:44346/SubpageSupport/BlockSupport";
         }
 
         public struct PageBugs

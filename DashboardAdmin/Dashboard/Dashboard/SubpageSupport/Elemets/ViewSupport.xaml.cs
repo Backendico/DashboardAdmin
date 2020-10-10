@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets.ModelSupport.Elements;
+using DashboardAdmin.Dashboard.Setting;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +23,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
     /// </summary>
     public partial class ViewSupport : UserControl
     {
-        public ViewSupport(BsonDocument DetailSupport)
+        public ViewSupport(BsonDocument DetailSupport,Action Refreshlist)
         {
             InitializeComponent();
 
@@ -48,18 +50,82 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
 
             TextCreated.Text = DetailSupport["Created"].ToLocalTime().ToString();
 
+            TextStudio.Text = DetailSupport["Studio"].ToString();
+
+            //init message
             foreach (var item in DetailSupport["Messages"].AsBsonArray)
             {
-                Debug.WriteLine(item.ToString());
+                PlaceMessages.Children.Add(new ModelMessage(item.AsBsonDocument));
             }
 
-            //init btns
+
+            //init close
             Root.MouseDown += (s, e) =>
             {
                 if (e.Source.GetType() == typeof(Grid))
                 {
                     ShowOffPanel();
                 }
+            };
+
+            //event BTN Send
+            BTNSend.MouseDown += (s, e) =>
+            {
+                if (TextboxMessage.Text.Length >= 1)
+                {
+                    var Message = new BsonDocument
+                {
+                    {"Message",TextboxMessage.Text },
+                    {"Sender",1 },
+                };
+
+                    SDK.PageSupport.AddMessageToSupport(DetailSupport["Token"].AsObjectId, DetailSupport["Studio"].AsString, Message,
+                        result =>
+                        {
+                            if (result)
+                            {
+                                TextboxMessage.Text = null;
+
+                                //send notifaction
+                                MainWindow.Notifaction("Support Send", Notifactions.StatusMessage.Ok);
+
+                                //add fake message
+                                Message.Add("Creator", 1);
+                                Message.Add("Created", DateTime.Now);
+                                PlaceMessages.Children.Add(new ModelMessage(Message));
+                            }
+                            else
+                            {
+                                MainWindow.Notifaction("Faild Send", Notifactions.StatusMessage.Error);
+                            }
+
+                        });
+                }
+                else
+                {
+                    MainWindow.Notifaction("Message Short", Notifactions.StatusMessage.Warrning);
+                }
+            };
+
+            //event BTN Block
+            BTNBlock.MouseDown += (s, e) =>
+            {
+                SDK.PageSupport.BlockMessage(DetailSupport["Studio"].AsString, DetailSupport["Token"].AsObjectId,
+                    result =>
+                    {
+                        if (result)
+                        {
+                            MainWindow.Notifaction("Blocked", Notifactions.StatusMessage.Ok);
+                            BTNBlock.Visibility = Visibility.Collapsed;
+                            PlaceSendMessage.Visibility = Visibility.Collapsed;
+                            Refreshlist();
+                        }
+                        else
+                        {
+                            MainWindow.Notifaction("Faild Block", Notifactions.StatusMessage.Error);
+                        }
+                    });
+
             };
 
             Loaded += (s, e) =>
@@ -69,6 +135,11 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
 
         }
 
+
+        void Bloced()
+        {
+
+        }
 
         void ShowOffPanel()
         {
@@ -99,6 +170,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
 
             storyboard.Begin(this);
         }
+
 
     }
 }

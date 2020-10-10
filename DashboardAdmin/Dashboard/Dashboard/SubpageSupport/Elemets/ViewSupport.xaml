@@ -12,12 +12,11 @@
         <DropShadowEffect Direction="0" Opacity="0.33" RenderingBias="Performance" ShadowDepth="0" BlurRadius="100"/>
     </UserControl.Effect>
 
-    <Grid x:Name="Root" Opacity="1" Background="#33000000"  >
+    <Grid x:Name="Root" Opacity="1"  Background="#33000000"  >
 
         <Border VerticalAlignment="Center" HorizontalAlignment="Center"  Background="White" CornerRadius="20" >
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" MaxHeight="600" Margin="10">
-
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500" MaxHeight="600" Margin="20">
                 <Grid  >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -37,6 +36,12 @@
                         <TextBlock>
                         <Run FontWeight="Bold" Text="Part: "/>
                         <Run x:Name="TextPart" Text="XXX"/>
+                        </TextBlock>
+                        
+                        <!--Studio-->
+                        <TextBlock>
+                        <Run FontWeight="Bold" Text="Studio: "/>
+                        <Run x:Name="TextStudio" Text="XXX"/>
                         </TextBlock>
 
                         <!--Token-->
@@ -58,28 +63,32 @@
                         </TextBlock>
 
                         <!--Close Support-->
-                        <Border Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="5" Background="Tomato" Width="80" Height="30">
+                        <Border Name="BTNBlock" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="5" Background="Tomato" Width="80" Height="30">
                             <TextBlock FontSize="20" Text="&#xF140;" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" />
                         </Border>
 
                     </StackPanel>
 
-                    <!--Messages Here-->
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,10" Grid.Row="1">
-
+                    <!--Send Message Here-->
+                    <ScrollViewer MaxHeight="400" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,10" Grid.Row="1">
+                        
+                        <StackPanel x:Name="PlaceMessages">
+                            
+                        </StackPanel>
+                        
                     </ScrollViewer>
 
                     <!--Messages Here-->
-                    <Grid   Grid.Row="2" >
+                    <Grid  x:Name="PlaceSendMessage"  Grid.Row="2" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBox  AcceptsReturn="True"  Grid.Column="0" AcceptsTab="True" TextWrapping="Wrap"/>
+                        <TextBox  x:Name="TextboxMessage" AcceptsReturn="True"  Grid.Column="0" AcceptsTab="True" TextWrapping="Wrap"/>
 
-                        <Border Cursor="Hand" Grid.Column="1" CornerRadius="5" Background="Orange" Width="30" Height="30">
+                        <Border x:Name="BTNSend" Cursor="Hand" Grid.Column="1" CornerRadius="5" Margin="10,0,0,0" Background="Orange" Height="30">
                             <TextBlock FontSize="15" Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE724;" VerticalAlignment="Center" TextAlignment="Center"/>
                         </Border>
 

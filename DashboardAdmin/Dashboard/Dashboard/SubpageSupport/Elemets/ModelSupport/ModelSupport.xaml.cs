@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using DashboardAdmin.Dashboard.Setting;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
+namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets.ModelSupport
 {
     /// <summary>
     /// Interaction logic for ModelSupport.xaml
     /// </summary>
     public partial class ModelSupport : UserControl
     {
-        public ModelSupport(BsonDocument DetailSupport)
+        public ModelSupport(BsonDocument DetailSupport, Action Refreshlist)
         {
             InitializeComponent();
 
@@ -37,7 +38,6 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
                 case 2:
                     TextPart.Text = "Payment";
                     break;
-
             }
 
             TextCreated.Text = DetailSupport["Created"].ToLocalTime().ToString();
@@ -59,10 +59,30 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
             //init BTNs
             BTNViewSupport.MouseDown += (s, e) =>
             {
-                MainWindow.Dashboard.Content.Children.Add(new ViewSupport(DetailSupport));
+                MainWindow.Dashboard.Content.Children.Add(new ViewSupport(DetailSupport,Refreshlist));
+            };
+
+
+            BTNBlockSupport.MouseDown += (s, e) =>
+            {
+                SDK.PageSupport.BlockMessage(DetailSupport["Studio"].AsString, DetailSupport["Token"].AsObjectId,
+                    Result =>
+                    {
+                        if (Result)
+                        {
+                            MainWindow.Notifaction("Blocked Support", Notifactions.StatusMessage.Ok);
+                            Refreshlist();
+                        }
+                        else
+                        {
+                            MainWindow.Notifaction("Faild Block", Notifactions.StatusMessage.Error);
+                        }
+                    });
+
             };
 
         }
+
 
 
     }

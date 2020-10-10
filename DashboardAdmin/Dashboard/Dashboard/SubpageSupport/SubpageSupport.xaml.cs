@@ -1,4 +1,5 @@
 ﻿using DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets;
+using DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets.ModelSupport;
 using DashboardAdmin.Dashboard.Setting;
 using System.Diagnostics;
 using System.Windows.Controls;
@@ -25,10 +26,16 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport
             SDK.PageSupport.ReciveSupport(
                 result =>
                 {
-                    foreach (var Support in result["ListSupports"].AsBsonArray)
+                    if (result.ElementCount >= 1)
                     {
-                        PlaceContentSupports.Children.Add(new ModelSupport(Support.AsBsonDocument));
-
+                        foreach (var Support in result["ListSupports"].AsBsonArray)
+                        {
+                            PlaceContentSupports.Children.Add(new ModelSupport(Support.AsBsonDocument, ReciveSupports));
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine(result.ToString());
                     }
                 },
                 () =>
