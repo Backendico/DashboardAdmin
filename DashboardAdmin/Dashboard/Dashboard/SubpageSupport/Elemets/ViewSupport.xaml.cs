@@ -135,12 +135,6 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
 
         }
 
-
-        void Bloced()
-        {
-
-        }
-
         void ShowOffPanel()
         {
             DoubleAnimation Anim = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.3)));

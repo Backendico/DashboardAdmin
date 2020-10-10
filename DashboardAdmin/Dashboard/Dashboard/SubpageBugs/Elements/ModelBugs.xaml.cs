@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements.ViewBug;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -42,9 +43,9 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements
             Priority.BorderBrush = (DetailBug["Priority"].ToInt32()) switch
             {
                 0 => new SolidColorBrush(Colors.LightGreen),
-                1=>new SolidColorBrush(Colors.Orange),
-                2=> new SolidColorBrush(Colors.Red),
-                _=>new SolidColorBrush(Colors.Transparent),
+                1 => new SolidColorBrush(Colors.Orange),
+                2 => new SolidColorBrush(Colors.Red),
+                _ => new SolidColorBrush(Colors.Transparent),
 
             };
 
@@ -53,6 +54,13 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageBugs.Elements
             TextDescription.Text = DetailBug["Description"].AsString;
             TextDashboard.Text = DetailBug["Dashboard"].AsString;
             TextDatabase.Text = DetailBug["Database"].AsString;
+
+            //action btn view
+            BTNView.MouseDown += (s, e) =>
+            {
+                MainWindow.Dashboard.Content.Children.Add(new ViewBug.ViewBug(DetailBug, null));
+
+            };
         }
 
     }

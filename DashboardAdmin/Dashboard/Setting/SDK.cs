@@ -251,6 +251,56 @@ namespace DashboardAdmin.Dashboard.Setting
                     ERR();
                 }
             }
+
+            public static async void RemoveBug(ObjectId _idBug, Action<bool> Result)
+            {
+                var client = new RestClient(Links.RemoveBug);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.DELETE);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", UserData.Token);
+                request.AddParameter("_id", _idBug.ToString());
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
+        }
+
+        sealed public class Globals
+        {
+            public static Links.Global Links;
+
+            public static async void SendNotifaction(ObjectId Token, string Studio, string Header, string Description, BsonDocument Detail, Action<bool> Result)
+            {
+                var client = new RestClient(Links.SendNotifaction);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AlwaysMultipartFormData = true;
+                request.AddParameter("Token", Token);
+                request.AddParameter("Studio", Studio);
+                request.AddParameter("Description", Description);
+                request.AddParameter("Header", Header);
+                request.AddParameter("Detail", Detail.ToString());
+                request.AddParameter("IsNotifaction", true);
+                var response = await client.ExecuteAsync(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    Result(true);
+                }
+                else
+                {
+                    Result(false);
+                }
+            }
+
         }
     }
 
@@ -260,6 +310,7 @@ namespace DashboardAdmin.Dashboard.Setting
         {
             public string LinkLogin => "https://localhost:44346/PageAUT_Admin/Login";
         }
+
         public struct PageStatices
         {
             public string ReciveStatices => "https://localhost:44346/PageStatices/ReciveStatices";
@@ -287,6 +338,13 @@ namespace DashboardAdmin.Dashboard.Setting
         public struct PageBugs
         {
             public string ReciveBugs => "https://localhost:44346/SubpageBugs/ReciveBugs";
+            public string RemoveBug => "https://localhost:44346/SubpageBugs/RemoveBug";
         }
+
+        public struct Global
+        {
+            public string SendNotifaction => "https://localhost:44346/Log/AddLog";
+        }
+
     }
 }
