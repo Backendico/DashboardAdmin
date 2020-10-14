@@ -184,7 +184,7 @@ namespace DashboardAdmin.Dashboard.Setting
                 }
             }
 
-            public static async void AddMessageToSupport(ObjectId TokenSupport, string Studio, BsonDocument Message, Action<bool> Result)
+            public static async void AddMessageToSupport(ObjectId TokenSupport,string TokenUser, string Studio, BsonDocument Message, Action<bool> Result)
             {
                 var client = new RestClient(Links.AddMessageToSupport);
                 client.Timeout = -1;
@@ -193,6 +193,7 @@ namespace DashboardAdmin.Dashboard.Setting
                 request.AddParameter("Token", UserData.Token);
                 request.AddParameter("TokenSupport", TokenSupport.ToString());
                 request.AddParameter("Studio", Studio);
+                request.AddParameter("TokenUser", TokenUser);
                 request.AddParameter("MessageDetail", Message.ToString());
                 var response = await client.ExecuteAsync(request);
 

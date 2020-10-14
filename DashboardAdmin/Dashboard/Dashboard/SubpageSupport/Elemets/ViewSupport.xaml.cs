@@ -79,7 +79,7 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageSupport.Elemets
                     {"Sender",1 },
                 };
 
-                    SDK.PageSupport.AddMessageToSupport(DetailSupport["Token"].AsObjectId, DetailSupport["Studio"].AsString, Message,
+                    SDK.PageSupport.AddMessageToSupport(DetailSupport["Token"].AsObjectId,DetailSupport["Creator"].ToString(), DetailSupport["Studio"].AsString, Message,
                         result =>
                         {
                             if (result)
