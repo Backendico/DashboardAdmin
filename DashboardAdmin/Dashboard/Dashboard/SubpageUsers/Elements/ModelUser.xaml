@@ -71,37 +71,19 @@
                 <TextBlock x:Name="TextLeaderboards"  VerticalAlignment="Center" TextAlignment="Center"  Text="Leaderboards" Grid.Column="3"/>
                 <TextBlock x:Name="TextStudios"  VerticalAlignment="Center" TextAlignment="Center"  Text="StudiosGame" Grid.Column="4"/>
                 <TextBlock x:Name="TextCash" VerticalAlignment="Center" TextAlignment="Center"  Text="Cash" Grid.Column="5"/>
-                <TextBlock x:Name="TextEmail" VerticalAlignment="Center" TextAlignment="Center"  Text="Email" Grid.Column="6"/>
+                <TextBlock  x:Name="TextEmail" VerticalAlignment="Center" TextAlignment="Center"  Text="Email" Grid.Column="6"/>
                 <TextBlock x:Name="TextPhone" VerticalAlignment="Center" TextAlignment="Center"  Text="Phone" Grid.Column="7"/>
 
                 <StackPanel  x:Name="Controller" Opacity="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="8" Background="Transparent">
-
-                    <!--Block User-->
-                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Tomato" CornerRadius="5,0,0,5">
-                        <TextBlock Text="&#xE8F8;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
-                    </Border>
-
-                    <!--Delete-->
-                    <Border Cursor="Hand"  Margin="1,0" Height="30" Width="30" Background="Tomato"  >
-                        <TextBlock Text="&#xE74D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
-                    </Border>
-
-                    <!--SendNotifaction-->
-                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Orange" >
-                        <TextBlock Text="&#xED0D;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
-                    </Border>
-
                     <!--EdiPlayer-->
-                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="30" Background="Green"  CornerRadius="0,5,5,0"  >
-                        <TextBlock Text="&#xE70F;" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
+                    <Border Cursor="Hand" Margin="1,0" Height="30" Width="80" Background="Orange"  CornerRadius="5"  >
+                        <TextBlock Text="&#xE70F;" Foreground="White" VerticalAlignment="Center"  TextAlignment="Center" FontFamily="Segoe MDL2 Assets"/>
                     </Border>
-
-
                 </StackPanel>
 
             </Grid>
 
         </Grid>
-    </Border>
+    </Border>+
 
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,10 +26,19 @@ namespace DashboardAdmin.Dashboard.Dashboard.SubpageUsers.Elements
             TextPlayers.Text = DetailUser["Players"].ToString();
             TextLeaderboards.Text = DetailUser["Leaderboards"].ToString();
             TextStudios.Text = DetailUser["GameStudio"].ToString();
-            TextCash.Text = DetailUser["Cash"].ToInt64().ToString("#,##0")+" T" ;
+            TextCash.Text = DetailUser["Cash"].ToInt64().ToString("#,##0") + " T";
             TextEmail.Text = DetailUser["Email"].AsString;
             TextPhone.Text = DetailUser["Phone"].GetType() != typeof(BsonNull) ? DetailUser["Phone"].ToString() : "Not Set";
 
+
+            //actions
+           
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
     }
 }
